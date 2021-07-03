@@ -1,0 +1,101 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.tcs.edureka"
+        minSdkVersion 26
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //firestore
+    implementation 'com.google.firebase:firebase-firestore:23.0.1'
+
+
+    //coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
+
+    //maps
+    implementation 'com.google.maps.android:maps-ktx:2.3.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+
+
+    def lifecycle_version = "2.4.0-alpha02"
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+
+    //slice
+    implementation 'androidx.slice:slice-core:1.0.0'
+    implementation 'androidx.slice:slice-builders:1.1.0-alpha02'
+    implementation 'androidx.annotation:annotation:1.3.0-alpha01'
+    implementation 'androidx.slice:slice-view:1.0.0'
+
+
+    //usb
+    implementation 'me.jahnen:libaums:0.8.0'
+    implementation 'me.jahnen:libaums-libusbcommunication:0.1'
+    implementation 'me.jahnen:libaums-storageprovider:0.5.1'
+
+
+    //work manager
+    def work_version = "2.5.0"
+    // (Java only)
+    implementation "androidx.work:work-runtime:$work_version"
+    // Kotlin + coroutines
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+
+    //firebaseui
+    implementation 'com.google.firebase:firebase-database:20.0.0'
+    implementation 'com.firebaseui:firebase-ui-database:6.2.1'
+    implementation platform('com.google.firebase:firebase-bom:28.2.0')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+}

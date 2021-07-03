@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1060443995535",
+    "firebase_url": "https://bhuvancom-geo.firebaseio.com",
+    "project_id": "bhuvancom-geo",
+    "storage_bucket": "bhuvancom-geo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060443995535:android:10524d3919498889a71ffa",
+        "android_client_info": {
+          "package_name": "com.tcs.edureka"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHeKBNDMdv7aICUW88LFDcFoI0FZm13vU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
