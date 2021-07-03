@@ -21,6 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TCS_EDURKA">
+        <activity android:name=".ui.activity.appointments.AppointmentActivity"></activity>
 
         <provider
             android:name=".providers.MySliceProvider"
@@ -36,8 +37,6 @@
                     android:pathPrefix="/"
                     android:scheme="http" />
             </intent-filter>
-
-
         </provider>
 
         <activity
@@ -45,10 +44,10 @@
             android:theme="@style/NoAction">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.activity.contacts.ContactsActivity" />
         <activity android:name=".ui.activity.contacts.AddContactActivity" />
         <activity
@@ -61,6 +60,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map" />
+
         <provider
             android:name="com.github.mjdev.libaums.storageprovider.UsbDocumentProvider"
             android:authorities="com.github.mjdev.libaums.storageprovider.documents"

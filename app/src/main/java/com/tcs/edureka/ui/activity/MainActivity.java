@@ -17,7 +17,9 @@ import com.tcs.edureka.ui.activity.contacts.ContactsActivity;
 import com.tcs.edureka.ui.activity.map.MapActivity;
 import com.tcs.edureka.utility.Constants;
 import com.tcs.edureka.utility.NotificationUtil;
-
+/**
+ * @author Bhuvaneshvar
+ */
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 

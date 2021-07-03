@@ -29,7 +29,7 @@ import com.google.firebase.firestore.GeoPoint
 import com.google.gson.Gson
 import com.tcs.edureka.R
 import com.tcs.edureka.databinding.FragmentMapBinding
-import com.tcs.edureka.model.MapUser
+import com.tcs.edureka.model.MapUserModel
 import com.tcs.edureka.model.USBDataModel
 import com.tcs.edureka.receivers.USBReceiver
 import com.tcs.edureka.ui.fragments.maps.viewmodel.MapViewModel
@@ -42,7 +42,9 @@ import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.HashMap
 
-
+/**
+ * @author Bhuvaneshvar
+ */
 class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
     private var param1: Any? = null
@@ -485,7 +487,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
             AlertDialog.Builder(requireContext())
                     .setPositiveButton("Yes") { d, _ ->
                         val geoPoint = GeoPoint(it.latitude, it.longitude)
-                        val mapUser = MapUser(Utility.getCurrentUserName(), geoPoint, true)
+                        val mapUser = MapUserModel(Utility.getCurrentUserName(), geoPoint, true)
                         saveMeToRide(mapUser)
                         d.cancel()
                     }
@@ -494,7 +496,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
                     }
                     .setNeutralButton("Cancel ride request") { dialog, _ ->
                         val geoPoint = GeoPoint(it.latitude, it.longitude)
-                        val mapUser = MapUser(Utility.getCurrentUserName(), geoPoint, false)
+                        val mapUser = MapUserModel(Utility.getCurrentUserName(), geoPoint, false)
                         saveMeToRide(mapUser)
                         dialog.cancel()
                     }
@@ -547,7 +549,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
 
     // assign self for ride in firestore so other people can see
-    private fun saveMeToRide(mapUser: MapUser) {
+    private fun saveMeToRide(mapUser: MapUserModel) {
         viewModel?.setMeForRide(mapUser)?.let {
             it.addOnCompleteListener { task ->
                 if (task.isSuccessful) {

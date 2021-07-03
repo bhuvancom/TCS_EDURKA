@@ -12,7 +12,9 @@ import com.tcs.edureka.ui.fragments.maps.USBFragment
 import com.tcs.edureka.utility.Constants
 import com.tcs.edureka.utility.Utility
 
-
+/**
+ * @author Bhuvaneshvar
+ */
 class MapActivity : AppCompatActivity() {
     private val TAG = "MapActivity"
 

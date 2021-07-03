@@ -12,7 +12,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.EventListener
-import com.tcs.edureka.model.MapUser
+import com.tcs.edureka.model.MapUserModel
 import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.io.BufferedInputStream
@@ -22,9 +22,12 @@ import java.net.URL
 import java.net.URLConnection
 import java.util.*
 
+/**
+ * @author Bhuvaneshvar
+ */
 class MapViewModel : ViewModel(), EventListener<QuerySnapshot> {
-    private val _userList = MutableLiveData<MutableList<MapUser>>()
-    val userList: LiveData<MutableList<MapUser>> = _userList
+    private val _userList = MutableLiveData<MutableList<MapUserModel>>()
+    val userList: LiveData<MutableList<MapUserModel>> = _userList
     var currentUserName = ""
     val url = "https://maps.googleapis.com/maps/api/directions/json?"
     val key = "AIzaSyCHeKBNDMdv7aICUW88LFDcFoI0FZm13vU"
@@ -127,7 +130,7 @@ class MapViewModel : ViewModel(), EventListener<QuerySnapshot> {
         firestore.addSnapshotListener(this)
     }
 
-    fun setMeForRide(mapUser: MapUser): Task<Void> {
+    fun setMeForRide(mapUser: MapUserModel): Task<Void> {
         currentUserName = mapUser.userName
         return FirebaseFirestore.getInstance().collection("users")
                 .document(mapUser.userName.replace(" ", "_", true).toLowerCase())
@@ -140,7 +143,7 @@ class MapViewModel : ViewModel(), EventListener<QuerySnapshot> {
             it.documentChanges
                     .forEach { documentChange ->
 
-                        val mapUser = documentChange.document.toObject(MapUser::class.java)
+                        val mapUser = documentChange.document.toObject(MapUserModel::class.java)
                         when (documentChange.type) {
                             DocumentChange.Type.ADDED -> {
                                 if (!mapUser.userName.contentEquals(currentUserName)) {

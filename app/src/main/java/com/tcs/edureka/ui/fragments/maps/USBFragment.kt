@@ -33,6 +33,9 @@ import org.json.JSONObject
 import java.util.*
 
 
+/**
+ * @author Bhuvaneshvar
+ */
 class USBFragment : Fragment(R.layout.fragment_u_s_b), OnMapReadyCallback, USBInterface {
 
 

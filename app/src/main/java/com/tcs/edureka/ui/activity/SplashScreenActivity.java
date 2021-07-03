@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.tcs.edureka.R;
 
+/**
+ * @author Bhuvaneshvar
+ */
 public class SplashScreenActivity extends AppCompatActivity {
 
     @Override

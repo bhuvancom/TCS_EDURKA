@@ -10,6 +10,9 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.tcs.edureka.R
 
+/**
+ * @author Bhuvaneshvar
+ */
 class NotificationUtil {
 
     companion object {

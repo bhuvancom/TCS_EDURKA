@@ -16,7 +16,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tcs.edureka.R;
 import com.tcs.edureka.model.ContactModel;
-
+/**
+ * @author Tanushree
+ */
 public class ContactsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;

@@ -15,6 +15,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.nio.charset.StandardCharsets
 
+/**
+ * @author Bhuvaneshvar
+ */
 class UsbUtil(usbManager: UsbManager, usbDevice: UsbDevice) {
 
     companion object {

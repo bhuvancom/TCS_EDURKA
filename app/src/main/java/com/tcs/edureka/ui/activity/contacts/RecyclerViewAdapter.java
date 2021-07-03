@@ -27,6 +27,9 @@ import com.tcs.edureka.model.ContactModel;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Tanushree
+ */
 public class RecyclerViewAdapter extends FirebaseRecyclerAdapter<ContactModel, RecyclerViewAdapter.ViewHolder> {
     public RecyclerViewAdapter(@NonNull FirebaseRecyclerOptions<ContactModel> options) {
         super(options);
