@@ -1,9 +1,10 @@
 package com.tcs.edureka.receivers
 
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.util.Log
+import com.tcs.edureka.ui.activity.appointments.RemindersActivity
 import com.tcs.edureka.utility.Constants
 import com.tcs.edureka.utility.NotificationUtil
 
@@ -51,12 +52,16 @@ class AlarmReceiver : BroadcastReceiver() {
             Constants.APPOINTMENT_ACTION -> {
 
                 val title = intent.getStringExtra(Constants.EXTRA_DATA_TITLE)
-                val dateAndTime = intent.getSerializableExtra(Constants.EXTRA_DATE_AND_TIME)
-                Log.d(TAG, "onReceive: $title, $dateAndTime ")
-                NotificationUtil.notify(
+                val dateAndTime = intent.getStringExtra(Constants.EXTRA_DATE_AND_TIME)
+
+                val intenting = Intent(context, RemindersActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                val pendingIntent = PendingIntent.getActivity(context, 0, intenting, 0)
+
+                NotificationUtil.notifyWithIntent(
                         "Appointment $title",
                         "$dateAndTime",
-                        context, 1
+                        context, pendingIntent
                 )
 
             }

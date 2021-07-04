@@ -21,11 +21,12 @@ import java.io.InputStreamReader
 import java.net.URL
 import java.net.URLConnection
 import java.util.*
+import javax.inject.Inject
 
 /**
  * @author Bhuvaneshvar
  */
-class MapViewModel : ViewModel(), EventListener<QuerySnapshot> {
+class MapViewModel @Inject constructor() : ViewModel(), EventListener<QuerySnapshot> {
     private val _userList = MutableLiveData<MutableList<MapUserModel>>()
     val userList: LiveData<MutableList<MapUserModel>> = _userList
     var currentUserName = ""

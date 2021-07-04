@@ -130,11 +130,11 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
             showToast("Please wait, route will appear after getting current location..")
         } else if (from.isNotEmpty() && to.isNotEmpty()) {
 
-            viewModel!!.getLocationByName(from, requireContext()) { locA ->
+            viewModel?.getLocationByName(from, requireContext()) { locA ->
                 if (locA == null) {
                     showToast("Location $from not found in map")
                 }
-                viewModel!!.getLocationByName(to, requireContext()) { locB ->
+                viewModel?.getLocationByName(to, requireContext()) { locB ->
                     if (locB == null) {
                         showToast("location $to not found in map")
                     }

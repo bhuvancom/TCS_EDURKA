@@ -73,7 +73,12 @@
                 <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
             </intent-filter>
         </provider>
-        <receiver android:name=".receivers.AlarmReceiver">
+        <receiver
+            android:name=".receivers.AlarmReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
             <intent-filter>
                 <action android:name="APPOINTMENT_ALARM" />
             </intent-filter>

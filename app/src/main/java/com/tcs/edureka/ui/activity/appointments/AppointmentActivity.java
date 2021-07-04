@@ -120,12 +120,12 @@ public class AppointmentActivity extends AppCompatActivity {
     void saveInDb(AppointmentDataModel dataModel, Calendar date) {
         appointmentViewModel
                 .addAppointment(dataModel);
-
+        String todayTommorowOrDate = Utility.getTodayTommorowOrDate(date.getTime());
         long timeInMillis = date.getTimeInMillis();
-        setAppointments(timeInMillis);
+        setAppointments(timeInMillis, todayTommorowOrDate);
         Utility.makeToast("Appointment is set for "
-                + Utility.getTodayTommorowOrDate(date.getTime()), this);
-        showDialog(dataModel.getTitle(), Utility.getTodayTommorowOrDate(date.getTime()));
+                + todayTommorowOrDate, this);
+        showDialog(dataModel.getTitle(), todayTommorowOrDate);
     }
 
     void showDialog(String title, String date) {
@@ -153,10 +153,10 @@ public class AppointmentActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setAppointments(long dateTimeInMillis) {
+    private void setAppointments(long dateTimeInMillis, String todayTom) {
         Intent intent = new Intent(this, AlarmReceiver.class);
         intent.putExtra(Constants.EXTRA_DATA_TITLE, title);
-        intent.putExtra(Constants.EXTRA_DATE_AND_TIME, datetime);
+        intent.putExtra(Constants.EXTRA_DATE_AND_TIME, todayTom);
         intent.setAction(Constants.APPOINTMENT_ACTION);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this,
@@ -166,10 +166,10 @@ public class AppointmentActivity extends AppCompatActivity {
 
         if (alarmManager != null) {
             Log.d(TAG, "setAppointments: setting alrm");
-            alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
                     dateTimeInMillis, // trigger 2 minute before
-                    pendingIntent
-            );
+                    pendingIntent);
         }
     }
 

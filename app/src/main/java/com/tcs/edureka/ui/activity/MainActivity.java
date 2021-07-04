@@ -18,7 +18,6 @@ import com.tcs.edureka.ui.activity.appointments.AppointmentActivity;
 import com.tcs.edureka.ui.activity.contacts.ContactsActivity;
 import com.tcs.edureka.ui.activity.map.MapActivity;
 import com.tcs.edureka.utility.Constants;
-import com.tcs.edureka.utility.NotificationUtil;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -56,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
         )) {
             finish();
         }
-
-        NotificationUtil.init(this);
 
 
         binding.btnOpenFragment.setOnClickListener((v) ->

@@ -15,6 +15,11 @@ public class Constants {
     public static final String APPOINTMENT_ACTION = "APPOINTMENT_ALARM";
 
 
+    //Notification related
+    public static final String CHANNEL_ID = "TCS_with_sound";
+    public static final String CHANNEL_ID_WITHOUT_SOUND = "TCS_without_sound";
+    public static final String CHANNEL_ID_STICKY = "TCS_stiky";
+
     //constant for determining activity
     public static final String MAP = "MAP";
     public static final String CONTACTS = "CONTACTS";
