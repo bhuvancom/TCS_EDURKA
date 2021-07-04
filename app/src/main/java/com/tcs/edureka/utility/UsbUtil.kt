@@ -18,7 +18,7 @@ import java.nio.charset.StandardCharsets
 /**
  * @author Bhuvaneshvar
  */
-class UsbUtil(usbManager: UsbManager, usbDevice: UsbDevice) {
+class UsbUtil {
 
     companion object {
 

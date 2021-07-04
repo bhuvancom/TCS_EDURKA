@@ -23,20 +23,11 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Add CalendarView to display the Calendar -->
-    <CalendarView
-        android:id="@+id/calendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="80dp"
-        android:background="#123456" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/calendar"
+        android:layout_centerInParent="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
@@ -58,19 +49,6 @@
                 android:layout_marginRight="10dp"
                 android:background="#B8DEE3"
                 android:hint="Click to Add Title"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:background="#B8DEE3"
-                android:hint="Click to Add Description"
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black" />

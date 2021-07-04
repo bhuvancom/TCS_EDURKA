@@ -5,4 +5,5 @@
     <string name="map">AIzaSyCHeKBNDMdv7aICUW88LFDcFoI0FZm13vU</string>
     <string name="usb_device_not_found">USB Device Not found</string>
     <string name="dashboard_label">Dashboard</string>
+    <string name="no_appointments">No Appointments</string>
 </resources>

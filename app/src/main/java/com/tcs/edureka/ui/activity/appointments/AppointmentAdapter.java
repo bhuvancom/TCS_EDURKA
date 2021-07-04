@@ -1,6 +1,5 @@
 package com.tcs.edureka.ui.activity.appointments;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,20 +10,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tcs.edureka.R;
 import com.tcs.edureka.model.AppointmentDataModel;
+import com.tcs.edureka.utility.Utility;
 
-import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  * @author Suraj
  */
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.MyViewHolder> {
 
-    private ArrayList<AppointmentDataModel> dataModel;
-    private Context context;
+    private List<AppointmentDataModel> dataModel;
 
-    public AppointmentAdapter(ArrayList<AppointmentDataModel> dataModel, Context context) {
+    public void setDataModel(List<AppointmentDataModel> dataModel) {
         this.dataModel = dataModel;
-        this.context = context;
     }
 
     @NonNull
@@ -36,24 +35,35 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        int date = dataModel.get(position).getDate();
+        int month = dataModel.get(position).getMonth();
+        int year = dataModel.get(position).getYear();
+        int hour = dataModel.get(position).getHour();
+        int minute = dataModel.get(position).getMinute();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, date, hour, minute);
+        String todayTommorowOrDate = Utility.getTodayTommorowOrDate(calendar.getTime());
+        holder.tvWhen.setText(todayTommorowOrDate);
+
         holder.tvTitle.setText(dataModel.get(position).getTitle());
-        holder.tvDescription.setText(dataModel.get(position).getDescription());
+
     }
 
     @Override
     public int getItemCount() {
-        return dataModel.size();
+        return dataModel == null ? 0 : dataModel.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvTitle;
-        TextView tvDescription;
+        TextView tvWhen;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvDescription = itemView.findViewById(R.id.tvDescription);
+            tvWhen = itemView.findViewById(R.id.tvWhen);
         }
     }
 

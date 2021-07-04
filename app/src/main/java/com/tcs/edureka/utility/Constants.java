@@ -9,6 +9,11 @@ public class Constants {
     public static final String EXTRA_DATA_TO = "EXTRA_DATA_TO";
     public static final String EXTRA_DATA_OPEN_USB = "USB";
     public static final String OPEN_MAP_WITH_PREFERRED_LOCATION = "OPEN_MAP_WITHOUT_DESTINATION";
+    //extra for appointments
+    public static final String EXTRA_DATA_TITLE = "TITLE";
+    public static final String EXTRA_DATE_AND_TIME = "DATE_AND_TIME";
+    public static final String APPOINTMENT_ACTION = "APPOINTMENT_ALARM";
+
 
     //constant for determining activity
     public static final String MAP = "MAP";

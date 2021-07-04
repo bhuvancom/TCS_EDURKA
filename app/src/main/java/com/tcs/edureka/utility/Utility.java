@@ -3,10 +3,8 @@ package com.tcs.edureka.utility;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.net.Uri;
-import android.util.Log;
+import android.text.format.DateUtils;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
@@ -15,8 +13,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
-import java.util.List;
+import java.util.Date;
 
 /**
  * @author Bhuvaneshvar
@@ -26,9 +23,28 @@ public class Utility {
     public static String sliceTitle = "";
     public static String sliceSubtitle = "";
     private static LatLng currentUserPrefLocation = null;
+    public static String[] MONTH_LIST = new String[]{"January", "February", "March", "April", "May", "June", "July",
+            "August", "September", "October", "November", "December"};
 
     public static boolean isPermissionGranted(Context context, String permission) {
         return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    public static String getTodayTommorowOrDate(Date date) {
+        int hours = date.getHours();
+        int minute = date.getMinutes();
+        if (DateUtils.isToday(date.getTime()))
+            return "Today at " + hours + " : " + minute;
+
+        if (DateUtils.isToday(date.getTime() - DateUtils.DAY_IN_MILLIS))
+            return "Tomorrow at " + hours + " : " + minute;
+
+        return new StringBuilder().append(date.getDate()).append("/") //-> 7/
+                .append(MONTH_LIST[date.getMonth() + 1]).append("/") //-> August/
+                .append(date.getYear() + 1900)
+                .append(" at ").append(hours).append(" : ").append(minute)
+                .toString();
+
     }
 
     public static String getCurrentUserName() {
@@ -55,26 +71,6 @@ public class Utility {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
-    // utility to get location name by given lat long
-    public static String getLocationName(Double lat, Double longi, Context context) {
-        Geocoder geo = new Geocoder(context);
-        StringBuilder builder = new StringBuilder();
-        List<Address> fromLocation;
-        try {
-            fromLocation = geo.getFromLocation(lat, longi, 1);
-            if (fromLocation.size() > 0) {
-                Address address = fromLocation.get(0);
-                for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
-                    builder.append(address.getAddressLine(i)).append("\n");
-                }
-            }
-        } catch (IOException e) {
-            Log.d(TAG, "getLocationName: " + e.getMessage());
-            e.printStackTrace();
-            return "";
-        }
-        return builder.toString();
-    }
 
     public static Uri getUri(Context context, String path) {
         return new Uri.Builder()

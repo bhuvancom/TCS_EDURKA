@@ -15,13 +15,15 @@
     <uses-feature android:name="android.hardware.usb.host" />
 
     <application
+        android:name=".TcsApplicationBase"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TCS_EDURKA">
-        <activity android:name=".ui.activity.appointments.AppointmentActivity"></activity>
+        <activity android:name=".ui.activity.appointments.AppointmentActivity" />
+        <activity android:name=".ui.activity.appointments.RemindersActivity" />
 
         <provider
             android:name=".providers.MySliceProvider"
@@ -71,6 +73,11 @@
                 <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
             </intent-filter>
         </provider>
+        <receiver android:name=".receivers.AlarmReceiver">
+            <intent-filter>
+                <action android:name="APPOINTMENT_ALARM" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
