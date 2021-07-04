@@ -60,7 +60,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
                 NotificationUtil.notifyWithIntent(
                         "Appointment $title",
-                        "$dateAndTime",
+                        "$dateAndTime\nTap to open",
                         context, pendingIntent
                 )
 
