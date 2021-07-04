@@ -134,7 +134,7 @@ public class AppointmentActivity extends AppCompatActivity {
                 .setCancelable(true)
                 .setMessage(" " + title + "\nDate time - " + date)
                 .setPositiveButton("View All Appointments", (d, w) -> openAllAppointments())
-                .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss()).show();
+                .setNegativeButton("Dismiss", (dialog, which) -> dialog.dismiss()).show();
     }
 
 
