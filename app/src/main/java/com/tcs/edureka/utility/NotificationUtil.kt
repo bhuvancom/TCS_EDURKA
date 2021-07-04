@@ -71,7 +71,7 @@ class NotificationUtil {
                     .setOngoing(true)
                     .setColor(Color.BLUE)
                     .setSmallIcon(R.mipmap.ic_launcher)
-                    .addAction(R.drawable.ic_launcher_foreground, "Cancel", null)
+                    .addAction(R.drawable.ic_launcher_foreground, "Cancel", intent)
                     .setAutoCancel(true)
                     .setStyle(NotificationCompat.BigTextStyle())
             val notificationManager = NotificationManagerCompat.from(context)
