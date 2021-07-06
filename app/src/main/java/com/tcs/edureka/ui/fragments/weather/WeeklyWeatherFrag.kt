@@ -19,6 +19,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * @author Bhuvaneshvar
+ */
 @AndroidEntryPoint
 class WeeklyWeatherFrag : Fragment(R.layout.fragment_weekly_weather) {
     private val TAG = "WeeklyWeatherFrag"

@@ -13,11 +13,15 @@ import com.tcs.edureka.R
 import com.tcs.edureka.databinding.FragmentDailyWeatherBinding
 import com.tcs.edureka.ui.fragments.weather.viewmodel.WeatherState
 import com.tcs.edureka.ui.fragments.weather.viewmodel.WeatherViewModel
+import com.tcs.edureka.utility.NotificationUtil
 import com.tcs.edureka.utility.Utility
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * @author Bhuvaneshvar
+ */
 @AndroidEntryPoint
 class DailyWeatherFrag : Fragment(R.layout.fragment_daily_weather) {
     lateinit var binding: FragmentDailyWeatherBinding
@@ -72,6 +76,18 @@ class DailyWeatherFrag : Fragment(R.layout.fragment_daily_weather) {
                         humidityValue.text = "${it.data.current.humidity}"
                         windValue.text = "${it.data.current.windSpeed} km/h"
                         uvValue.text = "${it.data.current.uv}"
+
+                        if (it.data.current.tempInC > 35) {
+                            NotificationUtil.notify("High Temperature alert",
+                                    "Current weather temperature is ${it.data.current.tempInC} °C",
+                                    requireContext(), 1)
+                        }
+
+                        if (it.data.current.tempInC < 15) {
+                            NotificationUtil.notify("Low Temperature alert",
+                                    "Current weather temperature is ${it.data.current.tempInC} °C",
+                                    requireContext(), 1)
+                        }
                     }
                 }
             }

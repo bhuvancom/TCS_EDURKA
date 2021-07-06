@@ -11,22 +11,24 @@ import com.tcs.edureka.ui.activity.MainActivity
 import com.tcs.edureka.utility.Utility
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * @author Bhuvaneshvar
+ */
 @AndroidEntryPoint
 class WeatherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //todo set preff city here and not found show pref screen
-        //get pref city data
 
-        if (1 == 2) {
-            val intent = Intent(this, MainActivity::class.java) //change to shared preff
+        Utility.PREFF_CITY = "bahraich" //todo set here after getting from pref
+
+        if (Utility.PREFF_CITY.isBlank()) {
+            val intent = Intent(this, MainActivity::class.java) //todo: take user to shared pref
             Utility.makeToast("Select city first", this)
             startActivity(intent)
             finishAffinity()
         }
 
-        Utility.PREFF_CITY = "bahraich" //
         val binding = ActivityWeatheBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

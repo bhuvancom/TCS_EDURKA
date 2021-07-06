@@ -13,6 +13,10 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
 
+
+/**
+ * @author Bhuvaneshvar
+ */
 @HiltViewModel
 class WeatherViewModel @Inject constructor(private val api: WeatherAPI) : ViewModel() {
 

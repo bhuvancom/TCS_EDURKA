@@ -40,4 +40,16 @@ object TCSAppModule {
     fun providesWeatherApi(): WeatherAPI {
         return RetroCreator.getInstance().apiCallSerive
     }
+
+//    @Provides
+//    @Singleton
+//    fun providesMediaDao() {
+//
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun providesRepository() {
+//
+//    }
 }

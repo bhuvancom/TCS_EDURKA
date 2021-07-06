@@ -11,6 +11,10 @@ import com.tcs.edureka.R
 import com.tcs.edureka.databinding.WeeklyItemsBinding
 import com.tcs.edureka.model.weather.ForecastDay
 
+
+/**
+ * @author Bhuvaneshvar
+ */
 class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
     private val diffCallback = object : DiffUtil.ItemCallback<ForecastDay>() {
