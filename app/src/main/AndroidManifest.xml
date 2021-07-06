@@ -23,8 +23,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TCS_EDURKA"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.appointments.AppointmentActivity" />
-        <activity android:name=".ui.activity.appointments.RemindersActivity" />
+        <activity
+            android:name=".ui.activity.appointments.AppointmentActivity"
+            android:label="Appointment" />
+        <activity
+            android:name=".ui.activity.appointments.RemindersActivity"
+            android:label="Appointment" />
 
         <provider
             android:name=".providers.MySliceProvider"
@@ -42,16 +46,24 @@
             </intent-filter>
         </provider>
 
-        <activity android:name=".ui.activity.SplashScreenActivity">
+        <activity
+            android:name=".ui.activity.SplashScreenActivity"
+            android:theme="@style/NoAction">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.contacts.ContactsActivity" />
-        <activity android:name=".ui.activity.contacts.AddContactActivity" />
-        <activity android:name=".ui.activity.weather.WeatherActivity" />
+        <activity
+            android:name=".ui.activity.contacts.ContactsActivity"
+            android:label="Contacts" />
+        <activity
+            android:name=".ui.activity.contacts.AddContactActivity"
+            android:label="Contacts" />
+        <activity
+            android:name=".ui.activity.weather.WeatherActivity"
+            android:label="Weather" />
         <activity
             android:name=".ui.activity.map.MapActivity"
             android:label="@string/title_activity_map" />

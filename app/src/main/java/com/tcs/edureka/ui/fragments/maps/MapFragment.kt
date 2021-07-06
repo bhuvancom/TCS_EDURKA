@@ -268,7 +268,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
             fileSystem ?: return
 
-            fileSystem.let { fs ->
+            fileSystem.let {
 
                 val usbM = USBDataModel(currentUser,
                         LatLng(currentLocation!!.latitude, currentLocation!!.longitude),
@@ -294,12 +294,12 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         val dialogBuilder = AlertDialog.Builder(requireContext())
         dialogBuilder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
                 .setCancelable(false)
-                .setPositiveButton("Yes") { dialog, id
+                .setPositiveButton("Yes") { dialog, _
                     ->
                     dialog.dismiss()
                     startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
                 }
-                .setNegativeButton("No") { dialog, id ->
+                .setNegativeButton("No") { dialog, _ ->
                     dialog.cancel()
                     activity?.onBackPressed()
                 }
@@ -507,13 +507,15 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
                     .setTitle("Add Ride Request?")
                     .setMessage("Press yes to Save your ride request on firestore")
                     .show()
+        } else {
+            Utility.makeToast("Current User value not found check preferred screen", requireContext())
         }
     }
 
 
     // listen to ride request present in firestore
     private fun listenToRideRequest() {
-        if (isFireStoreListening) return
+        if (isFireStoreListening || Utility.CURRENT_USER_NAME.isNullOrBlank()) return
 
         Log.d(TAG, "listenToRideRequest: on")
         isFireStoreListening = true

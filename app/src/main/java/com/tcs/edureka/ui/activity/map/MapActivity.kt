@@ -24,6 +24,8 @@ class MapActivity : AppCompatActivity() {
 
         //todo set preff location after reading
         Utility.setPreffLocation(LatLng(27.723796397196526, 81.7483190819621))
+
+
         //Utility.setPreffLocation(null);
         val from = intent.getStringExtra(Constants.EXTRA_DATA_FROM)
         val to = intent.getStringExtra(Constants.EXTRA_DATA_TO)
@@ -31,8 +33,13 @@ class MapActivity : AppCompatActivity() {
         val extraShouldOpenMapWithPrefLocation = intent.getStringExtra(Constants.OPEN_MAP_WITH_PREFERRED_LOCATION)
         val fragment: Fragment
         if (extraShouldOpenMapWithPrefLocation != null) {
-            Log.d(TAG, "onCreate: opening with route to preff loc")
-            fragment = MapFragment.newInstance(Utility.getPreffLocation())
+            if (Utility.getPreffLocation() == null) {
+                super.onBackPressed()
+                return
+            } else {
+                Log.d(TAG, "onCreate: opening with route to preff loc")
+                fragment = MapFragment.newInstance(Utility.getPreffLocation())
+            }
         } else if (from != null && to != null && !from.trim { it <= ' ' }.isEmpty() && !to.trim { it <= ' ' }.isEmpty()) {
             fragment = MapFragment.newInstance(from.trim { it <= ' ' },
                     to.trim { it <= ' ' })

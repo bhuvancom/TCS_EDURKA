@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">TCS_EDURKA</string>
-    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_map">Map</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="map">AIzaSyCHeKBNDMdv7aICUW88LFDcFoI0FZm13vU</string>
     <string name="usb_device_not_found">USB Device Not found</string>

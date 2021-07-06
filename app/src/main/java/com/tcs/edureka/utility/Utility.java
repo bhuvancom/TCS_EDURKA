@@ -36,9 +36,6 @@ public class Utility {
         return PREFF_CITY;
     }
 
-    public static void setPreffCity(String city) {
-        PREFF_CITY = city;
-    }
 
     public static String getTodayTommorowOrDate(Date date) {
         int hours = date.getHours();
@@ -57,8 +54,10 @@ public class Utility {
 
     }
 
+    public static String CURRENT_USER_NAME = "";
+
     public static String getCurrentUserName() {
-        return "bhuavan1";
+        return CURRENT_USER_NAME;
     }
 
     public static LatLng getPreffLocation() {
