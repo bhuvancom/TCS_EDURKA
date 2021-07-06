@@ -17,14 +17,16 @@ class WeatherActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         //todo set preff city here and not found show pref screen
+        //get pref city data
+
         if (1 == 2) {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java) //change to shared preff
             Utility.makeToast("Select city first", this)
             startActivity(intent)
             finishAffinity()
         }
 
-        Utility.PREFF_CITY = "bahraich"
+        Utility.PREFF_CITY = "bahraich" //
         val binding = ActivityWeatheBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
