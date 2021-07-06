@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/Widget.MaterialComponents.CircularProgressIndicator"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            app:indicatorColor="@color/purple_200" />
+
+        <RelativeLayout
+            android:id="@+id/relative"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@drawable/weather_forecast">
+
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                tools:text="New Delhi" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/city"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Friday, June 30" />
+
+            <TextView
+                android:id="@+id/condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/date"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Light Rain" />
+
+            <ImageView
+                android:id="@+id/weather_resource"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentEnd="true"
+                android:padding="8dp"
+                android:src="@drawable/art_light_rain" />
+
+            <TextView
+                android:id="@+id/temp_condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:padding="16dp"
+                android:textColor="@color/white"
+                android:textSize="48sp"
+                tools:text="36C" />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative"
+            tools:listitem="@layout/weekly_items" />
+
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

@@ -30,6 +30,16 @@ public class Utility {
         return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED;
     }
 
+    public static String PREFF_CITY;
+
+    public static String getPreffCity() {
+        return PREFF_CITY;
+    }
+
+    public static void setPreffCity(String city) {
+        PREFF_CITY = city;
+    }
+
     public static String getTodayTommorowOrDate(Date date) {
         int hours = date.getHours();
         int minute = date.getMinutes();

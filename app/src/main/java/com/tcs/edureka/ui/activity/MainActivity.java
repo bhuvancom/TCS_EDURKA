@@ -17,6 +17,7 @@ import com.tcs.edureka.receivers.AlarmReceiver;
 import com.tcs.edureka.ui.activity.appointments.AppointmentActivity;
 import com.tcs.edureka.ui.activity.contacts.ContactsActivity;
 import com.tcs.edureka.ui.activity.map.MapActivity;
+import com.tcs.edureka.ui.activity.weather.WeatherActivity;
 import com.tcs.edureka.utility.Constants;
 
 import java.util.Calendar;
@@ -74,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
             openAppointments("Tets title one two three",
                     date);
             //testBroadcast();
+        });
+
+        binding.btnOpen4.setOnClickListener(a -> {
+            startActivity(new Intent(MainActivity.this, WeatherActivity.class));
         });
     }
 

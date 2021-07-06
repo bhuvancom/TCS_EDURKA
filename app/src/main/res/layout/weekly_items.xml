@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:padding="4dp"
+    app:cardBackgroundColor="#EDE5BB"
+    app:cardElevation="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/weather_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_cloudy" />
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_toEndOf="@+id/weather_img"
+            android:gravity="center"
+            android:textSize="18sp"
+            tools:text="Sat" />
+
+        <TextView
+            android:id="@+id/temp"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginEnd="14dp"
+            android:layout_toEndOf="@+id/day"
+            android:gravity="center"
+            tools:text="32/26" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/temp"
+            android:gravity="center_vertical"
+            tools:text="Mostly cloudy with a thunderstorm" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

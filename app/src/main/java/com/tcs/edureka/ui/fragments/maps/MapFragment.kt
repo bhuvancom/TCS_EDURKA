@@ -459,9 +459,12 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
             loc.longitude = it.longitude
             viewModel!!.getLocationByLatLong(it.latitude, it.longitude, requireContext()) { locNam ->
                 // send notification
-                if (loc.distanceTo(location) <= 500) {
+                val distanceBetweenMeAndLoc = loc.distanceTo(location)
+                if (distanceBetweenMeAndLoc <= 500) {
+                    val speed = location.speed
+                    val time = if (distanceBetweenMeAndLoc > 0) ", ETA ${speed / distanceBetweenMeAndLoc} minutes" else ""
                     NotificationUtil.notify("Location within 500 meter",
-                            "Your preferred location $locNam is ${loc.distanceTo(location)} meter away",
+                            "Your preferred location $locNam is $distanceBetweenMeAndLoc meter away$time",
                             requireContext())
                 }
 
