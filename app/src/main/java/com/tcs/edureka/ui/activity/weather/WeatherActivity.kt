@@ -18,8 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class WeatherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
+        
         Utility.PREFF_CITY = "bahraich" //todo set here after getting from pref
 
         if (Utility.PREFF_CITY.isBlank()) {
