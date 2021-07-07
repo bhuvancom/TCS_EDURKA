@@ -52,7 +52,7 @@ class CallActivity : AppCompatActivity(), CallReceiver {
     fun makeCall(mob: String) {
         Log.d(TAG, "makeCall: $mob")
         try {
-            val intent = Intent(Intent.ACTION_DIAL)
+            val intent = Intent(Intent.ACTION_CALL)
             intent.data = Uri.parse("tel:$mob")
             startActivity(intent)
         } catch (e: java.lang.Exception) {
