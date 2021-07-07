@@ -30,13 +30,16 @@
         <activity
             android:name=".ui.activity.media.MyMediaPlayerActivity"
             android:label="@string/media"
-            android:launchMode="singleTop" />
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.appointments.AppointmentActivity"
-            android:label="Appointment" />
+            android:label="Appointment"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.appointments.RemindersActivity"
-            android:label="Appointment">
+            android:label="Appointment"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -62,6 +65,7 @@
 
         <activity
             android:name=".ui.activity.SplashScreenActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/NoAction">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -75,16 +79,20 @@
         </activity>
         <activity
             android:name=".ui.activity.contacts.ContactsActivity"
-            android:label="Contacts" />
+            android:label="Contacts"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.contacts.AddContactActivity"
-            android:label="Contacts" />
+            android:label="Contacts"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.weather.WeatherActivity"
-            android:label="Weather" />
+            android:label="Weather"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.map.MapActivity"
-            android:label="@string/title_activity_map" />
+            android:label="@string/title_activity_map"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.MainActivity"
             android:label="@string/dashboard_label" />
