@@ -357,5 +357,6 @@ class MyMediaPlayerActivity : AppCompatActivity() {
         }
 
         userAction = null
+        super.onBackPressed()
     }
 }

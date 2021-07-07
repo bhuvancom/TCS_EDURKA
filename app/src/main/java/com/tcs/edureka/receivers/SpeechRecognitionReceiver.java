@@ -17,6 +17,7 @@ import androidx.core.app.NotificationCompat;
 import com.tcs.edureka.R;
 import com.tcs.edureka.ui.activity.appointments.AppointmentActivity;
 import com.tcs.edureka.ui.activity.appointments.RemindersActivity;
+import com.tcs.edureka.ui.activity.call.CallActivity;
 import com.tcs.edureka.ui.activity.map.MapActivity;
 import com.tcs.edureka.ui.activity.media.MyMediaPlayerActivity;
 import com.tcs.edureka.ui.activity.weather.WeatherActivity;
@@ -47,10 +48,14 @@ public class SpeechRecognitionReceiver extends BroadcastReceiver {
                             intent.putExtras(receiverIntent.getExtras());
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             invokeNotification(context, intent, Constants.SPEECH_RECOGNITION_COMMAND_APPOINTMENTS.toUpperCase(), true);
-                            //context.startActivity(appointmentIntent);
+                            context.startActivity(intent);
                             break;
                         case Constants.SPEECH_RECOGNITION_COMMAND_CALL:
                             //Call.dialCall(context, "");
+                            Intent call = new Intent(context, CallActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.putExtras(receiverIntent.getExtras());
+                            context.startActivity(call);
                             break;
                         case Constants.SPEECH_RECOGNITION_COMMAND_CALL_HI:
                             break;

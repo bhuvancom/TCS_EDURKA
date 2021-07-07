@@ -1,73 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
+    android:layout_height="wrap_content"
+    tools:context=".ui.activity.contacts.AddContact"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="ADD CONTACT"
+        android:layout_marginBottom="30dp"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30dp"
+        android:text="Add Contact"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/addName"
-        android:layout_width="300dp"
+        android:id="@+id/add_phone_contact_display_name"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="30dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:hint="Name"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:hint="Person Name" />
 
     <EditText
-        android:id="@+id/addEMail"
-        android:layout_width="300dp"
+        android:id="@+id/add_phone_contact_number"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="30dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:hint="E-Mail ID"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:hint="Contact No" />
 
-    <EditText
-        android:id="@+id/addPersonalNo"
-        android:layout_width="300dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:hint="Personal Number"
-        android:inputType="phone"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:width="0dp"
+            android:gravity="left"
+            android:text="Phone Type : " />
 
-    <EditText
-        android:id="@+id/addOfcNo"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:hint="Office Phone No."
-        android:inputType="phone"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+        <Spinner
+            android:id="@+id/add_phone_contact_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
+            android:spinnerMode="dropdown" />
+    </LinearLayout>
 
     <Button
-        android:id="@+id/addContactButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/add_phone_contact_save_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="Add Contact"
-        android:textSize="20sp" />
-
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:textSize="20sp" />
-
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:text="Save Phone Contact" />
 </LinearLayout>

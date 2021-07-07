@@ -30,7 +30,8 @@ import com.tcs.edureka.receivers.AlarmReceiver;
 import com.tcs.edureka.receivers.SpeechRecognitionReceiver;
 import com.tcs.edureka.services.SpeechRecognitionService;
 import com.tcs.edureka.ui.activity.appointments.AppointmentActivity;
-import com.tcs.edureka.ui.activity.contacts.ContactsActivity;
+import com.tcs.edureka.ui.activity.call.CallActivity;
+import com.tcs.edureka.ui.activity.contacts.ReadContacts;
 import com.tcs.edureka.ui.activity.map.MapActivity;
 import com.tcs.edureka.ui.activity.media.MyMediaPlayerActivity;
 import com.tcs.edureka.ui.activity.weather.WeatherActivity;
@@ -105,7 +106,8 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.RECORD_AUDIO,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_CONTACTS
         }, 0);
 
 
@@ -164,24 +166,27 @@ public class MainActivity extends AppCompatActivity {
         binding.user.setOnClickListener(e ->
                 openPrefScreen());
 
-        binding.calendar.setOnClickListener(e -> {
-            startActivity(new Intent(MainActivity.this, AppointmentActivity.class));
-        });
+        binding.calendar.setOnClickListener(e ->
+                startActivity(new Intent(MainActivity.this, AppointmentActivity.class)));
 
-        binding.contact.setOnClickListener(e -> {
-            startActivity(new Intent(MainActivity.this, ContactsActivity.class));
-        });
+        binding.contact.setOnClickListener(e ->
+                startActivity(new Intent(MainActivity.this, ReadContacts.class)));
 
-        binding.weather.setOnClickListener(e -> {
-            startActivity(new Intent(MainActivity.this, WeatherActivity.class));
-        });
+        binding.weather.setOnClickListener(e ->
+                startActivity(new Intent(MainActivity.this, WeatherActivity.class)));
 
         binding.mediaPlayer.setOnClickListener(e ->
 
-        {
-            startActivity(new Intent(MainActivity.this, MyMediaPlayerActivity.class));
-        });
+                startActivity(new Intent(MainActivity.this, MyMediaPlayerActivity.class)));
 
+        binding.callLL.setOnClickListener(e -> callCall());
+
+    }
+
+    private void callCall() {
+        Intent in = new Intent(MainActivity.this, CallActivity.class);
+        //in.putExtra(Constants.CONTACT_NAME, "Maa");
+        startActivity(in);
     }
 
 
@@ -247,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void openContacts() {
-        Intent intent = new Intent(MainActivity.this, ContactsActivity.class);
+        Intent intent = new Intent(MainActivity.this, ReadContacts.class);
         startActivity(intent);
     }
 
