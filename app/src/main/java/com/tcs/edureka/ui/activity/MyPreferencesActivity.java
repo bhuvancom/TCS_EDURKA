@@ -7,7 +7,9 @@ import androidx.annotation.Nullable;
 
 import com.tcs.edureka.R;
 
-
+/**
+ * @author Gaurav
+ */
 public class MyPreferencesActivity extends PreferenceActivity {
 
     @Override

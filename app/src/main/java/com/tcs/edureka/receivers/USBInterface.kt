@@ -1,5 +1,8 @@
 package com.tcs.edureka.receivers;
 
+/**
+ * @author Bhuvaneshvar
+ */
 interface USBInterface {
 
     fun onUsbAttached()

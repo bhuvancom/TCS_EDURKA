@@ -17,6 +17,9 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+/**
+ * @author Bhuvaneshvar
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object TCSAppModule {

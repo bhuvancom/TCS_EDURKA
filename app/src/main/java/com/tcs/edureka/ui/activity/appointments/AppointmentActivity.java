@@ -31,7 +31,7 @@ import java.util.Date;
 import dagger.hilt.android.AndroidEntryPoint;
 
 /**
- * @author Suraj
+ * @author Suraj + Bhuvaneshvar
  * <p>
  * This activity is expecting two extras
  * EXTRA_DATA_TITLE as Title value in String form

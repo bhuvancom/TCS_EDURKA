@@ -11,6 +11,9 @@ import com.tcs.edureka.model.AppointmentDataModel
 import com.tcs.edureka.model.CallLogModel
 import com.tcs.edureka.model.mediaplayer.MediaModel
 
+/**
+ * @author Bhuvaneshvar
+ */
 @Database(entities = [AppointmentDataModel::class, MediaModel::class,
     CallLogModel::class], version = 2, exportSchema = false)
 abstract class AppDataBase : RoomDatabase() {

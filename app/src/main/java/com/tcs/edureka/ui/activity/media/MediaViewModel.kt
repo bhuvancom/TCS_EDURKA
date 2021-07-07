@@ -12,6 +12,9 @@ import javax.inject.Inject
 
 private const val TAG = "MediaViewModel"
 
+/**
+ * @author Bhuvaneshvar
+ */
 @HiltViewModel
 class MediaViewModel @Inject constructor(private val repo: MediaRepository) : ViewModel() {
 

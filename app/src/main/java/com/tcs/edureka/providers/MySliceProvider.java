@@ -26,6 +26,9 @@ import com.tcs.edureka.utility.Utility;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author Bhuvaneshvar
+ */
 public class MySliceProvider extends SliceProvider {
 
     private static final String TAG = "MySliceProvider";

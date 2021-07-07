@@ -10,6 +10,9 @@ import com.squareup.picasso.Picasso
 import com.tcs.edureka.databinding.MediaItemListBinding
 import com.tcs.edureka.model.mediaplayer.MediaModel
 
+/**
+ * @author Bhuvaneshvar
+ */
 class MyMediaAdapter(val onClick: (Int) -> Unit) : RecyclerView.Adapter<MyMediaAdapter.MyMediaViewHolder>() {
 
     interface OnNextPrevious {

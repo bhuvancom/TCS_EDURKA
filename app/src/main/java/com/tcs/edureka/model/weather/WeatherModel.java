@@ -1,5 +1,8 @@
 package com.tcs.edureka.model.weather;
 
+/**
+ * @author Bhuvaneshvar
+ */
 public class WeatherModel {
     private Location location;
     private Current current;

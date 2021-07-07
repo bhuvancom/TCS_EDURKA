@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.tcs.edureka.model.AppointmentDataModel
 
+/**
+ * @author Bhuvaneshvar
+ */
 @Dao
 interface AppointmentsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -13,7 +13,7 @@ import com.tcs.edureka.utility.Utility
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * @author Bhuvaneshvar
+ * @author Bhuvaneshvar + UI By fathima
  */
 @AndroidEntryPoint
 class WeatherActivity : AppCompatActivity() {

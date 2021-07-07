@@ -10,6 +10,9 @@ import com.tcs.edureka.utility.Utility;
 
 import dagger.hilt.android.HiltAndroidApp;
 
+/**
+ * @author Bhuvaneshvar
+ */
 @HiltAndroidApp
 public class TcsApplicationBase extends Application {
     @Override

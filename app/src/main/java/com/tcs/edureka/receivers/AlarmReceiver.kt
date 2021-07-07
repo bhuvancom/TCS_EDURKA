@@ -8,6 +8,9 @@ import com.tcs.edureka.ui.activity.appointments.RemindersActivity
 import com.tcs.edureka.utility.Constants
 import com.tcs.edureka.utility.NotificationUtil
 
+/**
+ * @author Bhuvaneshvar
+ */
 class AlarmReceiver : BroadcastReceiver() {
     /**
      * This method is called when the BroadcastReceiver is receiving an Intent

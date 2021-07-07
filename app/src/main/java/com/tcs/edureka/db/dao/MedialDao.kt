@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.tcs.edureka.model.mediaplayer.MediaModel
 
+/**
+ * @author Bhuvaneshvar
+ */
 @Dao
 interface MedialDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

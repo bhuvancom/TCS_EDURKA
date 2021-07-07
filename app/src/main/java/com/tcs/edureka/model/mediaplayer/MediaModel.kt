@@ -4,6 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
+/**
+ * @author Bhuvaneshvar
+ */
 @Entity
 data class MediaModel(
         @PrimaryKey(autoGenerate = true)

@@ -4,6 +4,9 @@ import com.tcs.edureka.db.dao.MedialDao
 import com.tcs.edureka.model.mediaplayer.MediaModel
 import javax.inject.Inject
 
+/**
+ * @author Bhuvaneshvar
+ */
 class MediaRepository @Inject constructor(val dao: MedialDao) {
     suspend fun upsertMedia(mediaModel: MediaModel) = dao.upsert(mediaModel)
     fun getMedia() = dao.getAllMedia()

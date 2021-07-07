@@ -6,6 +6,9 @@ import android.content.Intent
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
 
+/**
+ * @author Bhuvaneshvar
+ */
 class USBReceiver : BroadcastReceiver() {
     companion object {
         val ACTION_USB_PERMISSION: String = "com.android.example.USB_PERMISSION"
