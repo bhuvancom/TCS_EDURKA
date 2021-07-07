@@ -43,7 +43,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         logo.setAnimation(bottomAnim);
         slogan.setAnimation(bottomAnim);
 
-        int SPLASH_SCREEN = 5000;
+        int SPLASH_SCREEN = 1000;
         new Handler().postDelayed(this::openMain, SPLASH_SCREEN);
 
     }

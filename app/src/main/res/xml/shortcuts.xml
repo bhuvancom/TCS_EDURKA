@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/art_clear"
+        android:shortcutDisabledMessage="@string/short_cut_desabled"
+        android:shortcutId="random_constellation"
+        android:shortcutLongLabel="@string/short_cut_short_label"
+        android:shortcutShortLabel="@string/short_cut_long_label">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.tcs.edureka.ui.activity.appointments.RemindersActivity"
+            android:targetPackage="com.tcs.edureka.ui.activity.appointments" />
+
+    </shortcut>
+
+</shortcuts>

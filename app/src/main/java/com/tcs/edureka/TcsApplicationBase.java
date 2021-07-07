@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.os.Build;
 
 import com.tcs.edureka.utility.Constants;
+import com.tcs.edureka.utility.Utility;
 
 import dagger.hilt.android.HiltAndroidApp;
 
@@ -15,6 +16,7 @@ public class TcsApplicationBase extends Application {
     public void onCreate() {
         super.onCreate();
         createNotificationChannels();
+        Utility.setPreffLatLan(this);
     }
 
     private void createNotificationChannels() {

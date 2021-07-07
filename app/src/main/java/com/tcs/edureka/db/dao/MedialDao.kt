@@ -9,9 +9,12 @@ interface MedialDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(mediaModel: MediaModel): Long
 
-    @Query("SELECT * FROM MediaModel")
+    @Query("SELECT * FROM MediaModel order by payedCount desc")
     fun getAllMedia(): LiveData<List<MediaModel>>
 
     @Delete
     suspend fun deleteMedia(mediaModel: MediaModel)
+
+    @Query("delete from MediaModel")
+    suspend fun deleteAll()
 }

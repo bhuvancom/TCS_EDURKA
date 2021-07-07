@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.media.MyMediaPlayerActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMediaList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/linearLayout2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        tools:listitem="@layout/media_item_list" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <SeekBar
+            android:id="@+id/mediaSeek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"
+            android:secondaryProgressTint="#EF0A0A"
+            android:secondaryProgressTintMode="add" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btnPrevious"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/ic_baseline_skip_previous_24"
+                android:padding="4dp" />
+
+            <Button
+                android:id="@+id/btnPlay"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/ic_baseline_play_circle_outline_24"
+                android:padding="4dp" />
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/ic_baseline_skip_next_24"
+                android:padding="4dp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

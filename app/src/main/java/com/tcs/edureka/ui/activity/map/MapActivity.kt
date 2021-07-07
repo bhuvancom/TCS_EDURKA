@@ -5,7 +5,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.google.android.gms.maps.model.LatLng
 import com.tcs.edureka.R
 import com.tcs.edureka.ui.fragments.maps.MapFragment
 import com.tcs.edureka.ui.fragments.maps.USBFragment
@@ -22,10 +21,6 @@ class MapActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
 
-        //todo set preff location after reading
-        Utility.setPreffLocation(LatLng(27.723796397196526, 81.7483190819621))
-
-
         //Utility.setPreffLocation(null);
         val from = intent.getStringExtra(Constants.EXTRA_DATA_FROM)
         val to = intent.getStringExtra(Constants.EXTRA_DATA_TO)
@@ -33,7 +28,9 @@ class MapActivity : AppCompatActivity() {
         val extraShouldOpenMapWithPrefLocation = intent.getStringExtra(Constants.OPEN_MAP_WITH_PREFERRED_LOCATION)
         val fragment: Fragment
         if (extraShouldOpenMapWithPrefLocation != null) {
-            if (Utility.getPreffLocation() == null) {
+
+            if (Utility.getUserPrefLocation() == null) {
+                Utility.makeToast("Please fill your preferred location", this)
                 super.onBackPressed()
                 return
             } else {

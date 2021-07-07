@@ -33,6 +33,7 @@ import com.tcs.edureka.model.MapUserModel
 import com.tcs.edureka.model.USBDataModel
 import com.tcs.edureka.receivers.USBReceiver
 import com.tcs.edureka.ui.fragments.maps.viewmodel.MapViewModel
+import com.tcs.edureka.utility.Constants
 import com.tcs.edureka.utility.NotificationUtil
 import com.tcs.edureka.utility.UsbUtil
 import com.tcs.edureka.utility.Utility
@@ -85,7 +86,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMapBinding.bind(view)
-        currentUser = getCurrectUser()
+        currentUser = getCurrentUser()
         viewModel = MapViewModel()
         preffLocation = getPrefLocation()
         locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -224,9 +225,9 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     }
 
     // get current user this will be used in firestore save
-    private fun getCurrectUser(): String {
-        //todo add shared pref call to get current user
-        return "Bhuvan".replace(" ", "_", true).toLowerCase().trim()
+    private fun getCurrentUser(): String {
+        return Utility.getFromSharedPref(Constants.USERNAME, requireContext())
+                .replace(" ", "_", true).toLowerCase().trim()
     }
 
 

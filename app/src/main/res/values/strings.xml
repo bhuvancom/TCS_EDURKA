@@ -7,6 +7,10 @@
     <string name="dashboard_label">Dashboard</string>
     <string name="no_appointments">No Appointments</string>
 
+    <string name="short_cut_desabled">Disabled</string>
+    <string name="short_cut_short_label">Label1</string>
+    <string name="short_cut_long_label">Label2</string>
+
     <string name="feels_like">Feels like</string>
     <string name="today">Today</string>
     <string name="humidity">Humidity</string>
@@ -18,4 +22,11 @@
     <string name="about">About</string>
     <string name="settings">Settings</string>
     <string name="search">Search</string>
+    <string name="open_preferences">Open Preferences</string>
+    <string name="afree">Afree</string>
+    <string name="played_3_times">Played 3 times</string>
+    <string name="play">Play</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="media">Media Player</string>
 </resources>

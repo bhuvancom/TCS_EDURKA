@@ -10,6 +10,10 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <uses-feature android:name="android.hardware.usb.accessory" />
     <uses-feature android:name="android.hardware.usb.host" />
@@ -24,11 +28,21 @@
         android:theme="@style/Theme.TCS_EDURKA"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activity.media.MyMediaPlayerActivity"
+            android:label="@string/media"
+            android:launchMode="singleTop" />
+        <activity
             android:name=".ui.activity.appointments.AppointmentActivity"
             android:label="Appointment" />
         <activity
             android:name=".ui.activity.appointments.RemindersActivity"
-            android:label="Appointment" />
+            android:label="Appointment">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name=".providers.MySliceProvider"
@@ -54,6 +68,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
         <activity
             android:name=".ui.activity.contacts.ContactsActivity"
@@ -70,6 +88,7 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:label="@string/dashboard_label" />
+        <activity android:name=".ui.activity.MyPreferencesActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -85,6 +104,7 @@
                 <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
             </intent-filter>
         </provider>
+
         <receiver
             android:name=".receivers.AlarmReceiver"
             android:enabled="true">
@@ -95,6 +115,21 @@
                 <action android:name="APPOINTMENT_ALARM" />
             </intent-filter>
         </receiver>
+        <service android:name=".services.MyMusicServiceKt" />
+
+
+        <receiver
+            android:name=".receivers.SpeechRecognitionReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.tcs.edureka.speechrecognition" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name=".services.SpeechRecognitionService"
+            android:enabled="true"
+            android:exported="true" />
+
     </application>
 
 </manifest>

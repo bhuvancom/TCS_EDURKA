@@ -4,7 +4,11 @@ import android.content.Context
 import com.tcs.edureka.api.WeatherAPI
 import com.tcs.edureka.db.AppDataBase
 import com.tcs.edureka.db.dao.AppointmentsDao
+import com.tcs.edureka.db.dao.CallLogDao
+import com.tcs.edureka.db.dao.MedialDao
 import com.tcs.edureka.db.repository.AppointmentsRepository
+import com.tcs.edureka.db.repository.CallLogRepository
+import com.tcs.edureka.db.repository.MediaRepository
 import com.tcs.edureka.utility.RetroCreator
 import dagger.Module
 import dagger.Provides
@@ -41,15 +45,28 @@ object TCSAppModule {
         return RetroCreator.getInstance().apiCallSerive
     }
 
-//    @Provides
-//    @Singleton
-//    fun providesMediaDao() {
-//
-//    }
-//
-//    @Provides
-//    @Singleton
-//    fun providesRepository() {
-//
-//    }
+    @Provides
+    @Singleton
+    fun providesMediaDao(db: AppDataBase): MedialDao {
+        return db.getMediaDao()
+    }
+
+    @Provides
+    @Singleton
+    fun providesCallLogDao(db: AppDataBase): CallLogDao {
+        return db.getCallLogDao()
+    }
+
+    @Provides
+    @Singleton
+    fun providesMediaRepo(dao: MedialDao): MediaRepository {
+        return MediaRepository(dao)
+    }
+
+
+    @Provides
+    @Singleton
+    fun providesCallRepo(dao: CallLogDao): CallLogRepository {
+        return CallLogRepository(dao)
+    }
 }

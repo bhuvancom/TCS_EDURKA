@@ -5,13 +5,19 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.tcs.edureka.db.dao.AppointmentsDao
+import com.tcs.edureka.db.dao.CallLogDao
+import com.tcs.edureka.db.dao.MedialDao
 import com.tcs.edureka.model.AppointmentDataModel
+import com.tcs.edureka.model.CallLogModel
+import com.tcs.edureka.model.mediaplayer.MediaModel
 
-@Database(entities = [AppointmentDataModel::class], version = 2, exportSchema = false)
+@Database(entities = [AppointmentDataModel::class, MediaModel::class,
+    CallLogModel::class], version = 2, exportSchema = false)
 abstract class AppDataBase : RoomDatabase() {
     //todo add more doa if needed
     abstract fun getAppointmentDao(): AppointmentsDao
-
+    abstract fun getMediaDao(): MedialDao
+    abstract fun getCallLogDao(): CallLogDao
 
     companion object {
         @Volatile

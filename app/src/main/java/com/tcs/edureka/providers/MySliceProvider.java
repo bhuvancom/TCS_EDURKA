@@ -16,8 +16,10 @@ import androidx.slice.builders.ListBuilder;
 import androidx.slice.builders.ListBuilder.RowBuilder;
 import androidx.slice.builders.SliceAction;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.tcs.edureka.R;
 import com.tcs.edureka.ui.activity.MainActivity;
+import com.tcs.edureka.ui.activity.MyPreferencesActivity;
 import com.tcs.edureka.ui.activity.map.MapActivity;
 import com.tcs.edureka.utility.Constants;
 import com.tcs.edureka.utility.Utility;
@@ -106,19 +108,20 @@ public class MySliceProvider extends SliceProvider {
     }
 
     private SliceAction openMapActivity() {
-        //check if preffered location is save based on than intent
+
+        LatLng string = Utility.getUserPrefLocation();
 
         Intent intent;
-        if (Utility.getPreffLocation() != null) {
+        if (string != null) {
             if (Utility.sliceTitle.contains("calculating")) intent = new Intent();
             else {
                 intent = new Intent(getContext(), MapActivity.class);
                 intent.putExtra(Constants.OPEN_MAP_WITH_PREFERRED_LOCATION, "OPEN_MAP_WITHOUT_DESTINATION");
             }
         } else {
-            // todo change to preference activiy
-            Log.d(TAG, "openMapActivity: opening main");
-            intent = new Intent(getContext(), MainActivity.class);
+            Utility.makeToast("Please set your proffered Location", getContext());
+            Log.d(TAG, "openMapActivity: opening preff activity to et");
+            intent = new Intent(getContext(), MyPreferencesActivity.class);
         }
 
         return SliceAction.create(PendingIntent.getActivity(
