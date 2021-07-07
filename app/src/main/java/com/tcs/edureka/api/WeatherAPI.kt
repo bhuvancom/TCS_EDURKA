@@ -6,6 +6,10 @@ import retrofit2.http.GET
 import retrofit2.http.QueryMap
 import java.util.*
 
+
+/**
+ * @author Bhuvaneshvar
+ */
 interface WeatherAPI {
     @GET("forecast.json")
     suspend fun getWeather(@QueryMap map: HashMap<String, String>): Response<WeatherModel>
