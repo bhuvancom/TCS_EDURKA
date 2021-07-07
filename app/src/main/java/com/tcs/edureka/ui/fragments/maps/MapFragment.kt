@@ -355,6 +355,9 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
             isMyLocationEnabled = true
             uiSettings.isCompassEnabled = true
             var shouldTouchWork = true
+            if (Utility.getFromSharedPref(Constants.USERNAME, requireContext()).isNullOrEmpty()) {
+                shouldTouchWork = false
+            }
             if (from.isBlank()) {
                 Log.d(TAG, "onMapReady: $from ${from.isBlank()}")
             } else {
@@ -516,7 +519,8 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
     // listen to ride request present in firestore
     private fun listenToRideRequest() {
-        if (isFireStoreListening || Utility.CURRENT_USER_NAME.isNullOrBlank()) return
+        if (isFireStoreListening ||
+                Utility.getFromSharedPref(Constants.USERNAME, requireContext()).isNullOrEmpty()) return
 
         Log.d(TAG, "listenToRideRequest: on")
         isFireStoreListening = true

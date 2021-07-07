@@ -27,7 +27,7 @@ public class Utility {
     public static String sliceSubtitle = "";
     public static String[] MONTH_LIST = new String[]{"January", "February", "March", "April", "May", "June", "July",
             "August", "September", "October", "November", "December"};
-    public static String PREFF_CITY;
+    public static String PREFF_CITY = "";
     public static String CURRENT_USER_NAME = "";
     private static LatLng currentUserPrefLocation = null;
     private static LatLng PREFF_LAT_LAN = null;
@@ -68,8 +68,10 @@ public class Utility {
             try {
                 double lat = Double.parseDouble(aFloat);
                 double log = Double.parseDouble(bFlot);
-                latLng = new LatLng(lat, log);
-
+                if (lat > 0 && log > 0) {
+                    Log.d(TAG, "setPreffLatLan: adding " + lat + " " + log);
+                    latLng = new LatLng(lat, log);
+                }
             } catch (NumberFormatException ignored) {
                 Log.d(TAG, "setPreffLatLan: " + ignored.getMessage() + " " + aFloat + " " + bFlot);
             }
@@ -100,7 +102,7 @@ public class Utility {
     }
 
     public static LatLng getPreffLocation() {
-        return currentUserPrefLocation;
+        return getUserPrefLocation();
     }
 
     public static void setPreffLocation(LatLng latLng) {

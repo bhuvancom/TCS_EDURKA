@@ -110,7 +110,7 @@ public class MySliceProvider extends SliceProvider {
     private SliceAction openMapActivity() {
 
         LatLng string = Utility.getUserPrefLocation();
-
+        Log.d(TAG, "openMapActivity: " + string);
         Intent intent;
         if (string != null) {
             if (Utility.sliceTitle.contains("calculating")) intent = new Intent();
@@ -119,7 +119,6 @@ public class MySliceProvider extends SliceProvider {
                 intent.putExtra(Constants.OPEN_MAP_WITH_PREFERRED_LOCATION, "OPEN_MAP_WITHOUT_DESTINATION");
             }
         } else {
-            Utility.makeToast("Please set your proffered Location", getContext());
             Log.d(TAG, "openMapActivity: opening preff activity to et");
             intent = new Intent(getContext(), MyPreferencesActivity.class);
         }

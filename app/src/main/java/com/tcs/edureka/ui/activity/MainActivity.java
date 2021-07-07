@@ -46,7 +46,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 import static android.view.View.GONE;
 
 /**
- * @author Bhuvaneshvar
+ * @author Bhuvaneshvar + Suraj + Bhavya
  */
 
 @AndroidEntryPoint
@@ -57,12 +57,7 @@ public class MainActivity extends AppCompatActivity {
     boolean shouldMicWork;
     boolean shouldSliceWork;
     ActivityMainBinding binding;
-
-    void testSpeech() {
-        Intent intent = new Intent(MainActivity.this, SpeechRecognitionReceiver.class);
-        intent.setAction(Constants.BROADCAST_ACTION_SPEECH_RECOGNITION);
-        sendBroadcast(intent);
-    }
+    WeatherViewModel weatherViewModel;
 
     void testService() {
         Intent intent = new Intent(this, SpeechRecognitionService.class);
@@ -71,6 +66,16 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(MainActivity.this).registerReceiver(
                 speechRecognitionReceiver, new IntentFilter(Constants.BROADCAST_ACTION_SPEECH_RECOGNITION));
 
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem mi = menu.findItem(R.id.menu_mic);
+
+        if (mi != null)
+            mi.setVisible(shouldMicWork);
+
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -113,11 +118,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        shouldMicWork = Utility.getCheckedFromPref(Constants.SPEECH, this);
         invalidateOptionsMenu();
 
-
-        testService();
+        if (shouldMicWork)
+            testService();
 
         Intent intent = new Intent();
         String packageName = getPackageName();
@@ -128,16 +132,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        String userName = Utility.getFromSharedPref(Constants.USERNAME, this);
-        if (userName != null && !userName.isEmpty()) {
-            binding.textdashboard.setText("Hello, " + userName);
-        }
-
         //startActivity(new Intent(MainActivity.this, MyMediaPlayerActivity.class));
 
-        WeatherViewModel weatherViewModel = new ViewModelProvider(this).get(WeatherViewModel.class);
 
-        Utility.PREFF_CITY = Utility.getFromSharedPref(Constants.PREFERRED_CITY, this);
+        weatherViewModel = new ViewModelProvider(this).get(WeatherViewModel.class);
+
 
         if (!Utility.PREFF_CITY.trim().isEmpty()) {
             weatherViewModel.getCurrentDayWeather(Utility.getPreffCity());
@@ -160,26 +159,20 @@ public class MainActivity extends AppCompatActivity {
 
 
         binding.map.setOnClickListener(e ->
-                openMapActivity("", "TCS"));
+                openMapActivity("", ""));
 
         binding.user.setOnClickListener(e ->
                 openPrefScreen());
 
-        binding.calendar.setOnClickListener(e ->
-
-        {
+        binding.calendar.setOnClickListener(e -> {
             startActivity(new Intent(MainActivity.this, AppointmentActivity.class));
         });
 
-        binding.contact.setOnClickListener(e ->
-
-        {
+        binding.contact.setOnClickListener(e -> {
             startActivity(new Intent(MainActivity.this, ContactsActivity.class));
         });
 
-        binding.IVweatherApplication.setOnClickListener(e ->
-
-        {
+        binding.weather.setOnClickListener(e -> {
             startActivity(new Intent(MainActivity.this, WeatherActivity.class));
         });
 
@@ -193,20 +186,44 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        Log.d(TAG, "onResume: ");
+        super.onResume();
         shouldSliceWork = Utility.getCheckedFromPref(Constants.SLICE, this);
         invalidateOptionsMenu();
-
+        Utility.PREFF_CITY = Utility.getFromSharedPref(Constants.PREFERRED_CITY, this);
+        Utility.setPreffLatLan(this);
         if (shouldSliceWork) {
+            binding.sliceContainer.setVisibility(View.VISIBLE);
+            binding.sliceIcon.setVisibility(View.VISIBLE);
+            Utility.updateSliceTextAndSubtitle(
+                    "",
+                    "Tap to open your Proffered location",
+                    "It will start route from your current location", this
+            );
             SliceView sliceIcon = binding.sliceIcon;
             SliceLiveData.fromUri(this, Utility.getUri(this, "map"))
                     .observe(this, sliceIcon);
         } else {
+            binding.sliceContainer.setVisibility(View.GONE);
             binding.sliceIcon.setVisibility(GONE);
         }
 
+        String userName = Utility.getFromSharedPref(Constants.USERNAME, this);
+        Utility.CURRENT_USER_NAME = userName;
+
+        if (userName != null && !userName.isEmpty()) {
+            binding.textdashboard.setText("Hello, " + userName);
+        }
+
+        shouldMicWork = Utility.getCheckedFromPref(Constants.SPEECH, this);
+        invalidateOptionsMenu();
+        if (!Utility.PREFF_CITY.trim().isEmpty()) {
+            weatherViewModel.getCurrentDayWeather(Utility.getPreffCity());
+        }
+
     }
+
 
     void openMusicWithActio(String action) {
         Intent intent1 = new Intent(MainActivity.this, MyMediaPlayerActivity.class);
@@ -256,10 +273,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         if (!shouldMicWork) {
             menu.removeItem(R.id.menu_mic);
         }
-        getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

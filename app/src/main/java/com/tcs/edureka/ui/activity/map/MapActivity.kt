@@ -2,7 +2,6 @@ package com.tcs.edureka.ui.activity.map
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.tcs.edureka.R
@@ -37,7 +36,7 @@ class MapActivity : AppCompatActivity() {
                 Log.d(TAG, "onCreate: opening with route to preff loc")
                 fragment = MapFragment.newInstance(Utility.getPreffLocation())
             }
-        } else if (from != null && to != null && !from.trim { it <= ' ' }.isEmpty() && !to.trim { it <= ' ' }.isEmpty()) {
+        } else if (from != null && to != null && from.trim { it <= ' ' }.isNotEmpty() && !to.trim { it <= ' ' }.isEmpty()) {
             fragment = MapFragment.newInstance(from.trim { it <= ' ' },
                     to.trim { it <= ' ' })
             Log.d(TAG, "onCreate: open map with start $from to $to")
@@ -48,9 +47,10 @@ class MapActivity : AppCompatActivity() {
             fragment = USBFragment.newInstance()
             Log.d(TAG, "onCreate: no data recived opening just usb")
         } else {
-            Toast.makeText(this, "Command is required to open this map activity", Toast.LENGTH_SHORT).show()
-            super.onBackPressed()
-            return
+            //  Toast.makeText(this, "Destination is required to open this map activity", Toast.LENGTH_SHORT).show()
+            //super.onBackPressed()
+            //return
+            fragment = MapFragment.newInstance()
         }
         openFrag(fragment)
     }
