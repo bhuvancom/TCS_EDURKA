@@ -30,6 +30,7 @@ public class SpeechRecognitionReceiver extends BroadcastReceiver {
 
     Intent intent;
 
+    private static final String TAG = "SpeechRecognitionReceiv";
     @Override
     public void onReceive(Context context, Intent receiverIntent) {
         if (receiverIntent.getAction().equals(Constants.BROADCAST_ACTION_SPEECH_RECOGNITION)) {
@@ -52,9 +53,10 @@ public class SpeechRecognitionReceiver extends BroadcastReceiver {
                             break;
                         case Constants.SPEECH_RECOGNITION_COMMAND_CALL:
                             //Call.dialCall(context, "");
+                            Log.d(TAG, "onReceive: ");
                             Intent call = new Intent(context, CallActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            intent.putExtras(receiverIntent.getExtras());
+                            call.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            call.putExtras(receiverIntent.getExtras());
                             context.startActivity(call);
                             break;
                         case Constants.SPEECH_RECOGNITION_COMMAND_CALL_HI:
